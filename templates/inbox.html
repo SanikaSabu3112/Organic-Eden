@@ -1,0 +1,40 @@
+{% extends 'BASEE.html' %}
+{% block admin %}active{% endblock %}
+{% load static %}
+{% block body %}
+
+ <!-- End Side Menu -->
+  <!-- End Navigation -->
+<div class="container mt-3 p-3">
+        <form method="post">
+            {% csrf_token %}
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="color: black;"><b>NAME</b></th>
+                        <th style="color: black;"><b>EMAIL</b></th>
+                        <th style="color: black;"><b>PHONENUMBER</b></th>
+                        <th style="color: black;"><b>MESSAGE</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for i in st %}                
+                <tr>
+                  <th  style="color: black;"><b>{{i.name}}</b></th>
+                  <th  style="color: black;"><b>{{i.email}}</b></th>
+                  <th  style="color: black;"><b>{{i.phonenumber}}</b></th>
+                  <th  style="color: black;"><b>{{i.message}}</b></th>
+                 
+                  <th><div class="submit-button text-center mt-2 p-2">
+                    <button class="btn hvr-hover" id="submit" type="submit"><a href="adrply">Replay To  Admin</a></button>
+                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                    <div class="clearfix"></div>
+                </div></th>
+               
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </form>
+</div>
+{% endblock %}

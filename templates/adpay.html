@@ -1,0 +1,79 @@
+{% extends 'BASEE.html' %}
+{% block farmer %}active{% endblock %}
+{% load static %}
+{% block body %}
+
+ <!-- End Side Menu -->
+  <!-- End Navigation -->
+<div class="container mt-3 p-3">
+ 
+    
+      
+          <form method="post">
+            {% csrf_token %}
+
+            
+          <table class="table table-hover" style="color:  #0b0b0a;font-size: large;">
+            <thead>
+              <h1 style="color: red; margin-left: 400px;"><b> MY ORDER</b></h1>
+              <tr>
+                <th>Product</th>
+                <th>User Name</th>
+                <th>Farmer Name</th>
+                <th>Amount</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in spay %}                
+              <tr>
+                <th>{{i.product}}</th>
+                <th>{{i.usrdetail.name}}</th>
+                <th>{{i.product.frname.name}}</th>
+                <th>{{i.amount}}</th>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+<br><br>
+
+<div class="container mt-3 p-3">
+    <table class="table table-hover" style="color:  #0b0b0a;font-size: large;">
+      <thead>
+        <tr>
+          <!-- <th>Product &nbsp&nbsp&nbsp
+            Price/itm &nbsp&nbsp&nbsp
+            Qty&nbsp&nbsp&nbsp
+            Qty X Price&nbsp&nbsp&nbsp
+            Farmer &nbsp&nbsp&nbsp
+            Farmer-email
+          </th> -->
+          <th>Product</th>
+          <th>User Name</th>
+          <th>Farmer Name</th>
+          <th>Total Price</th>
+        
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in mpay %}                 
+        <tr>
+         
+          <th>{{i.pdctdetails}}</th>
+          <th>{{i.cartuser.name}}</th>
+          <th>{{i.farmer}}</th>
+          <th>{{i.totalprice}}</th>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+  </form>
+
+
+
+</div>
+
+   
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'BASEE.html' %}
+{% block farmer %}active{% endblock %}
+{% load static %}
+{% block body %}
+
+    <!-- Start Top Search -->
+    <!-- <form action="search" method="post">
+      {% csrf_token %}
+      
+    <div class="top-search">
+      <div class="container">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-search" name="srch"></i></span>
+              <input type="text" class="form-control" placeholder="Search" > -->
+              <!-- <span class="input-group-addon fa fa-check-circle"></span> -->
+              <!-- <button ><i class="fa fa-check-circle" name="btn"></i></button>
+              <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+          </div>
+      </div>
+  </div>
+    </form> -->
+  <!-- End Top Search -->
+
+ <!-- End Side Menu -->
+  <!-- End Navigation -->
+<div class="container mt-3 p-3 " style="margin-left: 100px;">
+        {% for i in st %}
+      <!-- <div class="card border border-2 border-secondary" style="margin:10px;width:330px;display: inline-block;vertical-align: top;height:600px;overflow: auto; "> -->
+        <div class="card border border-2 border-secondary" style="margin:10px;width:300px;display: inline-block;vertical-align: top;height:370px;overflow: auto; ">
+        <div class="card-body me-5">
+          <form method="post">
+            {% csrf_token %}
+            <!-- <a href="gkhh"><h1 class="card-title"><b>Name:{{i.name}}</b></h1> -->
+            <a href="Usrdisplayy2/{{i.pk}}"><img class="card-img-top rounded mb-2" src="{{i.image.url}}" alt="Card image" style="width:230px;height: 180px;">
+            <h1 class="card-title" style="color:#b0b435;"><b>{{i.name}}</b></h1></a>
+
+            <!-- <h2 class="card-title">Description:{{i.description}}</h2></a> -->
+            <h2 class="card-title btn btn d-inline m-3 p-1" style="color:#4c4e12;">Price:{{i.price}}</h2><br><br>
+            {% if i.name in itms %}
+            <h2 class="card-title btn btn-success d-inline m-3 p-2 mt-4" ><a href="mycart" class="text-light">View Cart</a></h2>
+            {% else %}
+            <h2 class="card-title btn btn-success d-inline m-3 p-2 mt-4" ><a href="addtocart/{{i.pk}}" class="text-light">Add To Cart</a></h2>
+            {% endif %}
+            <h2 class="card-title btn btn-success d-inline m-3 p-2 mt-4"><a href="../buynow/{{i.pk}}" class="text-light">Buy Now</a></h2>
+
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  <br>
+</div>
+   
+{% endblock %}
